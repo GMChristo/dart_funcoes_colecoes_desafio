@@ -44,15 +44,18 @@ void main() {
 
   //! 3 - Filtrar e deixar a lista somente com pessoas maiores de 18 anos e apresente essas pessoas pelo nome
   var maioresDeIdade = [];
-  var maisVelho = 0;
+  var maisVelho = [];
+  var maiorIdade = 0;
   for (var p in pessoasSemDuplicatas) {
     var pessoa = p.split('|');
     var idade = int.tryParse(pessoa[1]) ?? 0;
     if (idade > 18) {
       try {
+    // print('idade: $idade');
         maioresDeIdade.add(pessoa[0]);
-        if (idade > maisVelho) {
-          maisVelho = idade;
+        if (idade > maiorIdade) {
+          maiorIdade = idade;
+          maisVelho = pessoa;
         }
       } catch (e) {
         print(e);
@@ -62,7 +65,9 @@ void main() {
   print('Lista de pessoas maiores de idade: $maioresDeIdade');
 
   //! 4 - Encontre a pessoa mais velha e apresente o nome dela.
+  print('A pessoa mais velha é: $maisVelho');
 
+  
   //! Baseado na lista acima.
   //! 1 - Remova os pacientes duplicados e apresente a nova lista
   //! 2 - Me mostre a quantidade de pessoas por sexo (Masculino e Feminino) e depois me apresente o nome delas
